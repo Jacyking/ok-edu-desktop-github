@@ -20,7 +20,7 @@ jobs:
 
     - name: Install conan
       run : |
-        pip install conan==1.55
+        pip install conan==1.57
         conan install . -s compiler.runtime=MT --build=missing
 
     - name: Install Qt
