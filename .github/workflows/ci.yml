@@ -19,7 +19,9 @@ jobs:
         python-version: '3.9'
 
     - name: Install conan
-      run : pip install conan==1.55
+      run : |
+        pip install conan==1.55
+        conan install . -s compiler.runtime=MT --build=missing
 
     - name: Install Qt
       uses: jurplel/install-qt-action@v3
