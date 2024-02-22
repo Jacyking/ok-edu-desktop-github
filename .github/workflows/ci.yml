@@ -13,6 +13,11 @@ jobs:
     - name: Checkout Code
       uses: actions/checkout@v2
 
+    - name: Install Qt
+      uses: jurplel/install-qt-action@v3
+      with:
+          version: "5.15.2"
+
     - name: Configure Cmake
       run : cmake -B ${{ github.workspace }}/build -DCMAKE_BUILD_TYPE=Debug -DQT_DIR=false -DLINK_STATIC_QT=false
 
