@@ -12,11 +12,6 @@ jobs:
     steps :     
     - name: Checkout Code
       uses: actions/checkout@v2
-      
-    - name: Install Qt
-      uses: jurplel/install-qt-action@v3
-      with:
-          version: "5.15.2"
 
     - name: Install python
       uses: actions/setup-python@v1
@@ -27,6 +22,11 @@ jobs:
       run : |
         pip install conan==1.57
         conan install . -s compiler.runtime=MT --build=missing
+
+    - name: Install Qt
+      uses: jurplel/install-qt-action@v3
+      with:
+          version: "5.15.2"
     
     - name: Configure Cmake
       run : cmake -B ${{ github.workspace }}/build -DCMAKE_BUILD_TYPE=Debug -DLINK_STATIC_QT=false -DQT_DIR=D:/a/ok-edu-desktop-github/Qt/5.15.2/msvc2019_64
