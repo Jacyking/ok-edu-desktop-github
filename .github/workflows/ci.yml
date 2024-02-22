@@ -15,9 +15,11 @@ jobs:
 
     - name: Install python
       uses: actions/setup-python@v1
+      with:
+        python-version: '3.9'
 
     - name: Install conan
-      run : pip install conan
+      run : pip install conan 
 
     - name: Install Qt
       uses: jurplel/install-qt-action@v3
