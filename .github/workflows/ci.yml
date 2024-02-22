@@ -19,7 +19,7 @@ jobs:
         python-version: '3.9'
 
     - name: Install conan
-      run : pip install conan 
+      run : pip install conan=1.55
 
     - name: Install Qt
       uses: jurplel/install-qt-action@v3
