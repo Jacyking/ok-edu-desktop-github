@@ -1,0 +1,16 @@
+<!DOCTYPE RCC>
+<RCC version="1.0">
+  <qresource prefix="/translations/UIWindow">
+    <file alias="de.qm">/lvm/1/code/QtWorkspace/OkEDU-Classroom-Desktop/UI/window/de.qm</file>
+    <file alias="es.qm">/lvm/1/code/QtWorkspace/OkEDU-Classroom-Desktop/UI/window/es.qm</file>
+    <file alias="fr.qm">/lvm/1/code/QtWorkspace/OkEDU-Classroom-Desktop/UI/window/fr.qm</file>
+    <file alias="it.qm">/lvm/1/code/QtWorkspace/OkEDU-Classroom-Desktop/UI/window/it.qm</file>
+    <file alias="ja.qm">/lvm/1/code/QtWorkspace/OkEDU-Classroom-Desktop/UI/window/ja.qm</file>
+    <file alias="ko.qm">/lvm/1/code/QtWorkspace/OkEDU-Classroom-Desktop/UI/window/ko.qm</file>
+    <file alias="pt.qm">/lvm/1/code/QtWorkspace/OkEDU-Classroom-Desktop/UI/window/pt.qm</file>
+    <file alias="ru.qm">/lvm/1/code/QtWorkspace/OkEDU-Classroom-Desktop/UI/window/ru.qm</file>
+    <file alias="zh_CN.qm">/lvm/1/code/QtWorkspace/OkEDU-Classroom-Desktop/UI/window/zh_CN.qm</file>
+    <file alias="zh_TW.qm">/lvm/1/code/QtWorkspace/OkEDU-Classroom-Desktop/UI/window/zh_TW.qm</file>
+    <file alias="ar.qm">/lvm/1/code/QtWorkspace/OkEDU-Classroom-Desktop/UI/window/ar.qm</file>
+  </qresource>
+</RCC>

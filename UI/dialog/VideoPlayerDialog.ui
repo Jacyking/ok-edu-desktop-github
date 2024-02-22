@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+    <class>VideoPlayerDialog</class>
+    <widget class="QDialog" name="VideoPlayerDialog">
+        <property name="geometry">
+            <rect>
+                <x>0</x>
+                <y>0</y>
+                <width>404</width>
+                <height>290</height>
+            </rect>
+        </property>
+        <property name="windowTitle">
+            <string>Dialog</string>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout">
+            <property name="leftMargin">
+                <number>0</number>
+            </property>
+            <property name="topMargin">
+                <number>0</number>
+            </property>
+            <property name="rightMargin">
+                <number>0</number>
+            </property>
+            <property name="bottomMargin">
+                <number>0</number>
+            </property>
+            <item>
+                <widget class="OTitleBar" name="titleBar" native="true">
+                    <property name="maximumSize">
+                        <size>
+                            <width>16777215</width>
+                            <height>40</height>
+                        </size>
+                    </property>
+                </widget>
+            </item>
+            <item>
+                <widget class="OVideoPlayer" name="videoPlayer" native="true"/>
+            </item>
+        </layout>
+    </widget>
+    <customwidgets>
+        <customwidget>
+            <class>OTitleBar</class>
+            <extends>QWidget</extends>
+            <header>UI/component/OTitleBar.h</header>
+            <container>1</container>
+        </customwidget>
+        <customwidget>
+            <class>OVideoPlayer</class>
+            <extends>QWidget</extends>
+            <header>UI/component/OVideoPlayer.h</header>
+            <container>1</container>
+        </customwidget>
+    </customwidgets>
+    <resources/>
+    <connections/>
+</ui>

@@ -1,0 +1,6 @@
+<!DOCTYPE RCC>
+<RCC version="1.0">
+  <qresource prefix="/translations/OkEDU-Desktop">
+    <file alias="zh_CN.qm">/lvm/1/code/QtWorkspace/OkEDU-Classroom-Desktop/zh_CN.qm</file>
+  </qresource>
+</RCC>

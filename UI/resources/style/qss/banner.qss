@@ -1,0 +1,3 @@
+#imgBox{
+    border-image: url(:/resources/logo/main.svg);
+}

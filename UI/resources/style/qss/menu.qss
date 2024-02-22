@@ -1,0 +1,78 @@
+QPushButton {
+	background-color: transparent;
+	background-repeat: no-repeat;
+	background-position: center;
+	border-top-left-radius: 10px;
+	border-bottom-left-radius: 10px;
+}
+
+QLabel#label_logo{
+	background-color: white;
+	border-bottom-left-radius: 40px;
+	border-bottom-right-radius: 40px;
+}
+QPushButton:hover, QPushButton:!hover:checked { background-color: #28292c}
+
+QPushButton#classBtn {
+	background-image:url(:/resources/icon/menu/menu_class.png) ;
+}
+
+QPushButton#classBtn:hover, QPushButton#classBtn:!hover:checked {
+	background-image:url(:/resources/icon/menu/menu_class_active.png) ;
+}
+
+QPushButton#chatBtn {
+	background-image:url(:/resources/icon/menu/menu_chat.png) ;
+}
+
+QPushButton#chatBtn:checked  {
+	background-image:url(:/resources/icon/menu/menu_chat_active.png) ;
+}
+
+QPushButton#bookBtn {
+	background-image:url(:/resources/icon/menu/menu_book.png) ;
+}
+
+QPushButton#bookBtn:hover,QPushButton#bookBtn:!hover:checked  {
+	background-image:url(:/resources/icon/menu/menu_book_active.png) ;
+}
+
+QPushButton#recordBtn {
+	background-image:url(:/resources/icon/menu/menu_record.png) ;
+}
+
+QPushButton#recordBtn:hover, QPushButton#recordBtn:!hover:checked {
+	background-image:url(:/resources/icon/menu/menu_record_active.png) ;
+}
+
+QPushButton#calendarBtn {
+	background-image:url(:/resources/icon/menu/menu_calendar.png) ;
+}
+
+QPushButton#calendarBtn:hover, QPushButton#calendarBtn:!hover:checked {
+	background-image:url(:/resources/icon/menu/menu_calendar_active.png) ;
+}
+
+QPushButton#emailBtn {
+	background-image:url(:/resources/icon/menu/menu_email.png) ;
+}
+
+QPushButton#emailBtn:hover {
+	background-image:url(:/resources/icon/menu/menu_email_active.png) ;
+}
+
+QPushButton#personalBtn {
+	background-image:url(:/resources/icon/menu/menu_personal.png) ;
+}
+
+QPushButton#personalBtn:hover {
+	background-image:url(:/resources/icon/menu/menu_personal_active.png) ;
+}
+
+QPushButton#settingBtn {
+	background-image:url(:/resources/icon/menu/menu_setting.png) ;
+}
+
+QPushButton#settingBtn:hover, QPushButton#settingBtn:!hover:checked {
+	background-image:url(:/resources/icon/menu/menu_setting_active.png) ;
+}

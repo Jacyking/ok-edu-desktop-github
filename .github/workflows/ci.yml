@@ -1,0 +1,25 @@
+name: ci
+
+on: [ push ]
+
+jobs:
+  build:
+    runs-on : ${{ matrix.os }}
+    strategy:
+      matrix:
+          os: [ ubuntu-20.04 ]
+          
+    steps :     
+    - name: Checkout Code
+      uses: actions/checkout@v2
+
+    - name: Install Qt
+      uses: jurplel/install-qt-action@v3
+      with:
+          version: "5.15.2"
+
+    - name: Configure cmake
+      run : cmake -B ${{ github.workspace }}/build -DCMAKE_BUILD_TYPE=Debug -DQT_DIR=false -DLINK_STATIC_QT=false
+
+    - name: Build
+      run : cmake --build ${{ github.workspace }}/build --config Debug

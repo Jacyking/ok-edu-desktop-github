@@ -1,0 +1,4 @@
+#ifndef PAINTITEMLINE_H
+#define PAINTITEMLINE_H
+
+#endif // PAINTITEMLINE_H

@@ -1,0 +1,7 @@
+[submodule "3rdparty/QtAV"]
+	path = 3rdparty/QtAV
+	url = git@github.com:wang-bin/QtAV.git
+
+[submodule "3rdparty/gloox"]
+	path = 3rdparty/gloox
+	url = https://gitee.com/chuanshantech/ok-edu-gloox.git
