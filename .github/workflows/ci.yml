@@ -12,8 +12,6 @@ jobs:
     steps :     
     - name: Checkout Code
       uses: actions/checkout@v2
-      with:
-          submodules: 'true'
 
     - name: Install python
       uses: actions/setup-python@v1
