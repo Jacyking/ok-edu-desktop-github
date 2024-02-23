@@ -11,7 +11,6 @@
 [options]
  ffmpeg/*:with_zlib=False
  ffmpeg/*:with_ssl=False
- ffmpeg/*:with_libvpx=False
  ffmpeg/*:with_libx264=False
  ffmpeg/*:with_libx265=False
 
