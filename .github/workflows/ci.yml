@@ -21,7 +21,7 @@ jobs:
     - name: Install conan
       run : |
         pip install conan==1.57
-        sudo conan install . -s compiler.runtime=MT --build=missing
+        sudo cmd /c conan install . -s compiler.runtime=MT --build=missing
 
     - name: Install Qt
       uses: jurplel/install-qt-action@v3
