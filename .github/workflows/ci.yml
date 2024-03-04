@@ -19,7 +19,7 @@ jobs:
       with:
           key: ok-edu-desktop-${{ runner.os }}
           path: |
-            ${{ github.workspace }}/build/deps
+            ~/.conan
             ${{ github.workspace }}/../Qt/5.15.2/msvc2019_64
 
     - name : Setup Qt Env
@@ -29,13 +29,13 @@ jobs:
         QTDIR: ${{ github.workspace }}/../Qt/5.15.2/msvc2019_64
       run  : echo ${env:QTDIR}
 
-    - name: Install python
+    - name: Install Python
       if  : steps.cache.outputs.cache-hit != 'true'
       uses: actions/setup-python@v1
       with:
         python-version: '3.9'
     
-    - name: Install conan
+    - name: Install Conan
       if  : steps.cache.outputs.cache-hit != 'true'
       run : |
         pip install conan==1.59
@@ -46,9 +46,3 @@ jobs:
       uses: jurplel/install-qt-action@v3
       with:
           version: "5.15.2"
-    
-    - name: Configure Cmake
-      run : cmake -B ${{ github.workspace }}/build -DCMAKE_BUILD_TYPE=Release -DLINK_STATIC_QT=OFF
-
-    - name: Build
-      run : cmake --build ${{ github.workspace }}/build --config Release
