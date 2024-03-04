@@ -11,10 +11,44 @@ jobs:
           
     steps :     
     - name: Checkout Code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
+
+    - name: Cache
+      id  : cache
+      uses: actions/cache@v4
+      with:
+          key: ok-edu-desktop-${{ runner.os }}
+          path: |
+            ${{ github.workspace }}/build/deps
+            ${{ github.workspace }}/../Qt/5.15.2/msvc2019_64
+
+    - name : Setup Qt Env
+      if   : steps.cache.outputs.cache-hit == 'true'
+      shell: pwsh
+      env  : 
+        QTDIR: ${{ github.workspace }}/../Qt/5.15.2/msvc2019_64
+      run  : echo ${env:QTDIR}
+
+    - name: Install python
+      if  : steps.cache.outputs.cache-hit != 'true'
+      uses: actions/setup-python@v1
+      with:
+        python-version: '3.9'
+    
+    - name: Install conan
+      if  : steps.cache.outputs.cache-hit != 'true'
+      run : |
+        pip install conan==1.59
+        conan install ${{ github.workspace }} -s compiler.runtime=MT --build=missing
+
+    - name: Install Qt
+      if  : steps.cache.outputs.cache-hit != 'true'
+      uses: jurplel/install-qt-action@v3
+      with:
+          version: "5.15.2"
     
     - name: Configure Cmake
-      run : cmake -B ${{ github.workspace }}/build -DCMAKE_BUILD_TYPE=Debug -DLINK_STATIC_QT=false -DQT_DIR=${{ github.workspace }}/../Qt/5.15.2/msvc2019_64
+      run : cmake -B ${{ github.workspace }}/build -DCMAKE_BUILD_TYPE=Release -DLINK_STATIC_QT=OFF
 
     - name: Build
-      run : cmake --build ${{ github.workspace }}/build --config Debug
+      run : cmake --build ${{ github.workspace }}/build --config Release
