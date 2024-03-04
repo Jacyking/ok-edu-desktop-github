@@ -12,27 +12,9 @@ jobs:
     steps :     
     - name: Checkout Code
       uses: actions/checkout@v2
-
-    - name: Install python
-      uses: actions/setup-python@v1
-      with:
-        python-version: '3.9'
-    
-    - name: Install conan
-      run : |
-        pip install conan==1.57
-        conan install ${{ github.workspace }} -s compiler.runtime=MT --build=missing
-
-    - name: Install Qt
-      uses: jurplel/install-qt-action@v3
-      with:
-          version: "5.15.2"
     
     - name: Configure Cmake
       run : cmake -B ${{ github.workspace }}/build -DCMAKE_BUILD_TYPE=Debug -DLINK_STATIC_QT=false -DQT_DIR=${{ github.workspace }}/../Qt/5.15.2/msvc2019_64
 
     - name: Build
       run : cmake --build ${{ github.workspace }}/build --config Debug
-
-    - name: Upload Artifact
-      uses: actions/upload-artifact@v3
