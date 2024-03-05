@@ -29,18 +29,6 @@ jobs:
         QTDIR: ${{ github.workspace }}/../Qt/5.15.2/msvc2019_64
       run  : echo ${env:QTDIR}
 
-    - name: Install Python
-      if  : steps.cache.outputs.cache-hit != 'true'
-      uses: actions/setup-python@v1
-      with:
-        python-version: '3.9'
-    
-    - name: Install Conan
-      if  : steps.cache.outputs.cache-hit != 'true'
-      run : |
-        pip install conan==1.59
-        conan install ${{ github.workspace }} -s compiler.runtime=MT --build=missing
-
     - name: Install Qt
       if  : steps.cache.outputs.cache-hit != 'true'
       uses: jurplel/install-qt-action@v3
