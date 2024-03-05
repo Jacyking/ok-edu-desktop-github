@@ -16,15 +16,8 @@ jobs:
     - name: Cache
       id  : cache
       uses: actions/cache@v3
-      env :
-          cache-name: cache-qt
       with:
           path: ${{ github.workspace }}/../Qt/5.15.2/msvc2019_64
-          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/conanfile.txt') }}
-          restore-keys: |
-            ${{ runner.os }}-build-${{ env.cache-name }}-
-            ${{ runner.os }}-build-
-            ${{ runner.os }}-
 
     - if   : ${{ steps.cache.outputs.cache-hit == 'true' }}
       name : Setup Qt Env
