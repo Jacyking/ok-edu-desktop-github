@@ -16,21 +16,25 @@ jobs:
     - name: Cache
       id  : cache
       uses: actions/cache@v4
+      env :
+          cache-name: cache-qt
       with:
-          path: |
-            ~/.conan
-            ${{ github.workspace }}/../Qt/5.15.2/msvc2019_64
-          key: ${{ runner.os }}-${{ hashFiles('**/lockfiles') }}
+          path: ${{ github.workspace }}/../Qt/5.15.2/msvc2019_64
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/conanfile.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
 
-    - name : Setup Qt Env
-      if   : steps.cache.outputs.cache-hit == 'true'
+    - if   : ${{ steps.cache.outputs.cache-hit == 'true' }}
+      name : Setup Qt Env
       shell: pwsh
       env  : 
         QTDIR: ${{ github.workspace }}/../Qt/5.15.2/msvc2019_64
       run  : echo ${env:QTDIR}
 
-    - name: Install Qt
-      if  : steps.cache.outputs.cache-hit != 'true'
+    - if  : ${{ steps.cache.outputs.cache-hit != 'true' }}
+      name: Install Qt
       uses: jurplel/install-qt-action@v3
       with:
           version: "5.15.2"
