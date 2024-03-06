@@ -15,7 +15,7 @@ jobs:
 
     - name: Cache
       id  : cache
-      uses: actions/cache@v4
+      uses: actions/cache@v1
       with:
           key: ok-edu-desktop-${{ runner.os }}
           path: ${{ github.workspace }}/../Qt/5.15.2/msvc2019_64
@@ -32,6 +32,3 @@ jobs:
       uses: jurplel/install-qt-action@v3
       with:
           version: "5.15.2"
-          target : desktop
-          arch   : win64_msvc2019_64
-          cached : ${{ steps.cache.outputs.cache-hit }}
