@@ -27,14 +27,12 @@ jobs:
           key: ok-edu-desktop-windows-qt
           path: ${{ github.workspace }}/../Qt/5.15.2/msvc2019_64
 
-    - if  : ${{ steps.cache-conan.outputs.cache-hit != 'true' }}
-      name: Install Python
+    - name: Install Python
       uses: actions/setup-python@v1
       with:
         python-version: '3.9'
 
-    - if  : ${{ steps.cache-conan.outputs.cache-hit != 'true' }}
-      name: Install Conan
+    - name: Install Conan
       run : |
         pip install conan==1.59
         conan install ${{ github.workspace }} -s compiler.runtime=MT --build=missing
@@ -54,6 +52,4 @@ jobs:
           arch: "amd64"
 
     - name: Configure CMake
-      run : | 
-        cp -r ~/.conan ${{ github.workspace }}/build/deps
-        cmake -B ${{ github.workspace }}/build -G Ninja -DCMAKE_BUILD_TYPE=Release -DQT_DIR=${{ github.workspace }}/../Qt/5.15.2/msvc2019_64 -DLINK_STATIC_QT=OFF
+      run : cmake -B ${{ github.workspace }}/build -G Ninja -DCMAKE_BUILD_TYPE=Release -DQT_DIR=${{ github.workspace }}/../Qt/5.15.2/msvc2019_64 -DLINK_STATIC_QT=OFF
