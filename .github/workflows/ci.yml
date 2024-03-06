@@ -32,4 +32,6 @@ jobs:
       uses: jurplel/install-qt-action@v3
       with:
           version: "5.15.2"
-          cached: ${{ steps.cache.outputs.cache-hit }}
+          target : desktop
+          arch   : win64_msvc2019_64
+          cached : ${{ steps.cache.outputs.cache-hit }}
