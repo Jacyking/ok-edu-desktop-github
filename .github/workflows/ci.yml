@@ -17,8 +17,10 @@ jobs:
       id  : cache
       uses: actions/cache@v1
       with:
-          key: ok-edu-desktop-${{ runner.os }}
-          path: ${{ github.workspace }}/../Qt/5.15.2/msvc2019_64
+          key: ok-edu-desktop-windows
+          path: |
+            ~/.conan
+            ${{ github.workspace }}/../Qt/5.15.2/msvc2019_64
 
     - if   : ${{ steps.cache.outputs.cache-hit == 'true' }}
       name : Setup Qt Env
@@ -26,6 +28,18 @@ jobs:
       env  : 
         QTDIR: ${{ github.workspace }}/../Qt/5.15.2/msvc2019_64
       run  : echo ${env:QTDIR}
+
+    - if   : ${{ steps.cache.outputs.cache-hit != 'true' }}
+      name: Install Python
+      uses: actions/setup-python@v1
+      with:
+        python-version: '3.9'
+
+    - if   : ${{ steps.cache.outputs.cache-hit != 'true' }}
+      name: Install Conan
+      run : |
+        pip install conan==1.59
+        conan install ${{ github.workspace }} -s compiler.runtime=MT --build=missing
 
     - if  : ${{ steps.cache.outputs.cache-hit != 'true' }}
       name: Install Qt
