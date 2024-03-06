@@ -15,7 +15,7 @@ jobs:
 
     - name: Cache
       id  : cache
-      uses: actions/cache@v3
+      uses: actions/cache@v1
       with:
           key: ok-edu-desktop-${{ runner.os }}
           path: ${{ github.workspace }}/../Qt/5.15.2/msvc2019_64
