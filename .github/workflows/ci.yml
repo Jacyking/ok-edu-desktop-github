@@ -13,28 +13,33 @@ jobs:
     - name: Checkout Code
       uses: actions/checkout@v3
 
-    - name: Cache
-      id  : cache
+    - name: Cache Qt
+      id  : cache-qt
       uses: actions/cache@v1
       with:
-          key: ok-edu-desktop-windows3
-          path: |
-            "~/.conan"
-            ${{ github.workspace }}/../Qt/5.15.2/msvc2019_64
+          key: ok-edu-desktop-windows-qt
+          path: ${{ github.workspace }}/../Qt/5.15.2/msvc2019_64
 
-    - if  : ${{ steps.cache.outputs.cache-hit != 'true' }}
+    - name: Cache Conan
+      id  : cache-conan
+      uses: actions/cache@v1
+      with:
+          path: ~/.conan
+          key: ok-edu-desktop-windows-conan
+
+    - if  : ${{ steps.cache-conan.outputs.cache-hit != 'true' }}
       name: Install Python
       uses: actions/setup-python@v1
       with:
         python-version: '3.9'
 
-    - if  : ${{ steps.cache.outputs.cache-hit != 'true' }}
+    - if  : ${{ steps.cache-conan.outputs.cache-hit != 'true' }}
       name: Install Conan
       run : |
         pip install conan==1.59
         conan install ${{ github.workspace }} -s compiler.runtime=MT --build=missing
 
-    - if  : ${{ steps.cache.outputs.cache-hit != 'true' }}
+    - if  : ${{ steps.cache-qt.outputs.cache-hit != 'true' }}
       name: Install Qt
       uses: jurplel/install-qt-action@v3
       with:
