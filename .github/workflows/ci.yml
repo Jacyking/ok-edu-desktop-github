@@ -17,7 +17,7 @@ jobs:
       id  : cache
       uses: actions/cache@v1
       with:
-          key: ok-edu-desktop-windows
+          key: ok-edu-desktop-windows1
           path: |
             '~/.conan'
             ${{ github.workspace }}/../Qt/5.15.2/msvc2019_64
