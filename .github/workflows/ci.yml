@@ -13,19 +13,19 @@ jobs:
     - name: Checkout Code
       uses: actions/checkout@v3
 
-    - name: Cache Qt
-      id  : cache-qt
-      uses: actions/cache@v1
-      with:
-          key: ok-edu-desktop-windows-qt
-          path: ${{ github.workspace }}/../Qt/5.15.2/msvc2019_64
-
     - name: Cache Conan
       id  : cache-conan
       uses: actions/cache@v1
       with:
           path: ~/.conan
           key: ok-edu-desktop-windows-conan
+
+    - name: Cache Qt
+      id  : cache-qt
+      uses: actions/cache@v1
+      with:
+          key: ok-edu-desktop-windows-qt
+          path: ${{ github.workspace }}/../Qt/5.15.2/msvc2019_64
 
     - if  : ${{ steps.cache-conan.outputs.cache-hit != 'true' }}
       name: Install Python
